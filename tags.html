@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+{% assign tags_size = site.tags | size %}
+{% if tags_size > 0 %}
+<div class="tags-page">
+  {% assign tag_array = '' | split: '' %}
+  {% for tag in site.tags %}
+    {% assign tag_name = tag[0] %}
+    {% assign tag_posts = tag[1] %}
+    {% assign tag_count = tag_posts.size | times: 1000 %}
+    {% assign tag_entry = tag_count | append: '|' | append: tag_name %}
+    {% assign tag_array = tag_array | push: tag_entry %}
+  {% endfor %}
+  {% assign sorted_tags = tag_array | sort | reverse %}
+  {% for tag_entry in sorted_tags %}
+    {% assign tag_parts = tag_entry | split: '|' %}
+    {% assign tag_name = tag_parts[1] %}
+    {% assign tag_posts = site.tags[tag_name] %}
+    <a href="{{ '/' | relative_url }}?tag={{ tag_name }}" class="tag-item">
+      #{{ tag_name }} <span class="tag-count">({{ tag_posts.size }})</span>
+    </a>
+  {% endfor %}
+</div>
+{% else %}
+  <div class="empty-state">
+    <p class="empty-state-label">{{ site.ui.tags_empty_title | default: "No tags yet" }}</p>
+    <p class="empty-state-hint">{{ site.ui.tags_empty_hint | default: "Add tagged posts to see them listed here." }}</p>
+  </div>
+{% endif %}
+

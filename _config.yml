@@ -1,0 +1,65 @@
+# Site Settings
+title: "Minimal Front"
+description: "A minimal blog built with Jekyll"
+url: "" # GitHub Pages URL will be set automatically
+baseurl: "" # Leave empty for GitHub Pages root
+
+# Author
+author:
+  name: ""
+  email: ""
+
+# Social
+github: "" # Your GitHub username (e.g., "username")
+linkedin: "" # Your LinkedIn username (e.g., "in/username" or "username")
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Collections (if needed)
+collections:
+  - posts
+
+# Pagination (optional)
+paginate: 10
+paginate_path: "/page/:num/"
+
+# Comments (Utterances)
+utterances:
+  repo: "" # e.g. "username/repo"
+  issue_term: pathname
+  label: "comment"
+
+# UI Text
+ui:
+  nav_about_label: "About"
+  nav_posts_label: "Posts"
+  nav_tags_label: "Tags"
+  share_label: "Share"
+  tags_more_label: "More →"
+  share_copied_label: "Copied!"
+  share_copy_failed_label: "Copy failed"
+  nav_prev: "Previous"
+  nav_next: "Next"
+  related_title: "Related posts"
+  related_empty: "No related posts yet."
+  posts_empty_title: "No posts yet"
+  posts_empty_hint: "Create your first post in the <code>_posts</code> directory."
+  tags_empty_title: "No tags yet"
+  tags_empty_hint: "Add tagged posts to see them listed here."

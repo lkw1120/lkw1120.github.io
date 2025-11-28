@@ -1,0 +1,13 @@
+<header class="mobile-header" id="mobileHeader">
+  <div class="mobile-header-inner">
+    <a class="mobile-header-title" href="{{ '/' | relative_url }}">
+      {{ site.title | default: "Minimal Front" }}
+    </a>
+    <nav class="mobile-header-nav">
+      <a href="{{ '/' | relative_url }}">{{ site.ui.nav_posts_label | default: "Posts" }}</a>
+      <a href="{{ '/tags' | relative_url }}">{{ site.ui.nav_tags_label | default: "Tags" }}</a>
+      <a href="{{ '/about' | relative_url }}">{{ site.ui.nav_about_label | default: "About" }}</a>
+    </nav>
+  </div>
+</header>
+

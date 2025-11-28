@@ -1,0 +1,13 @@
+{% if site.utterances and site.utterances.repo != "" %}
+<div class="post-comments">
+  <script src="https://utteranc.es/client.js"
+          repo="{{ site.utterances.repo }}"
+          issue-term="{{ site.utterances.issue_term | default: 'pathname' }}"
+          label="{{ site.utterances.label | default: 'comment' }}"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+{% endif %}
+

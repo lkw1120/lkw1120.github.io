@@ -1,0 +1,62 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>
+    </div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.tags.size > 0 %}
+      <div class="post-tags">
+        {% for tag in page.tags %}
+            <a href="{{ '/' | relative_url }}?tag={{ tag }}" class="tag">#{{ tag }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
+  
+  <div id="post-content" class="post-content">
+    {{ content }}
+  </div>
+  
+  {% if page.tags.size > 0 %}
+    <div class="post-tags post-tags-bottom">
+      <div class="post-tags-list">
+        {% for tag in page.tags %}
+            <a href="{{ '/' | relative_url }}?tag={{ tag }}" class="tag">#{{ tag }}</a>
+        {% endfor %}
+      </div>
+      <div class="share-actions">
+        <a
+          href="javascript:void(0)"
+          class="share-link"
+          data-url="{{ page.url | absolute_url }}"
+          data-copied-label="{{ site.ui.share_copied_label | default: 'Copied!' }}"
+          data-copy-failed-label="{{ site.ui.share_copy_failed_label | default: 'Copy failed' }}"
+        >
+          {{ site.ui.share_label | default: "Share" }}
+        </a>
+      </div>
+    </div>
+  {% endif %}
+  
+  <nav class="post-navigation">
+    {% if page.previous %}
+      <a href="{{ page.previous.url | relative_url }}" class="post-nav-link post-nav-prev">
+        <span class="post-nav-label">{{ site.ui.nav_prev | default: "Previous" }}</span>
+        <span class="post-nav-title">{{ page.previous.title }}</span>
+      </a>
+    {% endif %}
+    {% if page.next %}
+      <a href="{{ page.next.url | relative_url }}" class="post-nav-link post-nav-next">
+        <span class="post-nav-label">{{ site.ui.nav_next | default: "Next" }}</span>
+        <span class="post-nav-title">{{ page.next.title }}</span>
+      </a>
+    {% endif %}
+  </nav>
+  
+  {% include comments.html %}
+</article>
+

@@ -1,0 +1,23 @@
+<div class="tags-sidebar">
+  <ul class="tag-list">
+    {% assign sorted_tags = site.tags | sort %}
+    {% assign count = 0 %}
+    {% for tag in sorted_tags %}
+      {% if count >= 10 %}
+        {% break %}
+      {% endif %}
+      {% assign tag_name = tag[0] %}
+      {% assign tag_posts = tag[1] %}
+      <li>
+        <a href="{{ '/' | relative_url }}?tag={{ tag_name }}" class="tag-link">
+          #{{ tag_name }} <span class="tag-count">({{ tag_posts.size }})</span>
+        </a>
+      </li>
+      {% assign count = count | plus: 1 %}
+    {% endfor %}
+  </ul>
+  {% if site.tags.size > 10 %}
+    <a href="{{ '/tags' | relative_url }}" class="tags-more-link">{{ site.ui.tags_more_label | default: "More →" }}</a>
+  {% endif %}
+</div>
+

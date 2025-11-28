@@ -1,0 +1,25 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% assign og_title = page.title | default: site.title %}
+{% assign raw_desc = page.excerpt | default: site.description %}
+{% assign og_desc = raw_desc | strip_html | strip_newlines | truncate: 160 %}
+{% assign og_image = page.og_image | default: site.default_image %}
+{% assign raw_url = page.url | default: site.url %}
+{% assign og_url = raw_url | absolute_url %}
+
+<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ og_desc }}">
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta property="og:title" content="{{ og_title }}">
+<meta property="og:description" content="{{ og_desc }}">
+<meta property="og:url" content="{{ og_url }}">
+{% if og_image %}
+<meta property="og:image" content="{{ og_image | absolute_url }}">
+{% endif %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+
